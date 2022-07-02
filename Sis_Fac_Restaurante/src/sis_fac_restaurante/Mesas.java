@@ -26,22 +26,187 @@ public class Mesas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlMenuMesas = new javax.swing.JPanel();
+        lblFotoMenuMesas = new javax.swing.JLabel();
+        btnCobrarMesa = new javax.swing.JButton();
+        btnIngresarPedido = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstPedidoActual = new javax.swing.JList<>();
+        lblPedidoActual = new javax.swing.JLabel();
+        pnlMesas = new javax.swing.JPanel();
+        tglMesaUno = new javax.swing.JToggleButton();
+        tglMesaDos = new javax.swing.JToggleButton();
+        tglMesaTres = new javax.swing.JToggleButton();
+        tglMesaCuatro = new javax.swing.JToggleButton();
+        tglMesaCinco = new javax.swing.JToggleButton();
+        tglMesaSeis = new javax.swing.JToggleButton();
+        tglMesaSiete = new javax.swing.JToggleButton();
+        tglMesaOcho = new javax.swing.JToggleButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(java.awt.Color.darkGray);
+
+        pnlMenuMesas.setBackground(new java.awt.Color(163, 96, 10));
+        pnlMenuMesas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        lblFotoMenuMesas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sis_fac_restaurante/ripichip´s cropped.png"))); // NOI18N
+        lblFotoMenuMesas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnCobrarMesa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCobrarMesa.setText("Cobrar Mesa");
+        btnCobrarMesa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        btnIngresarPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnIngresarPedido.setText("Ingresar Pedido");
+        btnIngresarPedido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        lstPedidoActual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jScrollPane1.setViewportView(lstPedidoActual);
+
+        lblPedidoActual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPedidoActual.setText("Pedido Actual");
+
+        javax.swing.GroupLayout pnlMenuMesasLayout = new javax.swing.GroupLayout(pnlMenuMesas);
+        pnlMenuMesas.setLayout(pnlMenuMesasLayout);
+        pnlMenuMesasLayout.setHorizontalGroup(
+            pnlMenuMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuMesasLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(lblPedidoActual)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlMenuMesasLayout.createSequentialGroup()
+                .addComponent(lblFotoMenuMesas)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlMenuMesasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMenuMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCobrarMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnIngresarPedido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlMenuMesasLayout.setVerticalGroup(
+            pnlMenuMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuMesasLayout.createSequentialGroup()
+                .addComponent(lblFotoMenuMesas)
+                .addGap(21, 21, 21)
+                .addComponent(btnIngresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCobrarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPedidoActual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlMesas.setBackground(java.awt.Color.darkGray);
+
+        tglMesaUno.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaUno.setText("Mesa 1");
+        tglMesaUno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tglMesaUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tglMesaUnoActionPerformed(evt);
+            }
+        });
+
+        tglMesaDos.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaDos.setText("Mesa 2");
+        tglMesaDos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        tglMesaTres.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaTres.setText("Mesa 3");
+        tglMesaTres.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        tglMesaCuatro.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaCuatro.setText("Mesa 4");
+        tglMesaCuatro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        tglMesaCinco.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaCinco.setText("Mesa 5");
+        tglMesaCinco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        tglMesaSeis.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaSeis.setText("Mesa 6");
+        tglMesaSeis.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        tglMesaSiete.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaSiete.setText("Mesa 7");
+        tglMesaSiete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        tglMesaOcho.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tglMesaOcho.setText("Mesa 8");
+        tglMesaOcho.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        javax.swing.GroupLayout pnlMesasLayout = new javax.swing.GroupLayout(pnlMesas);
+        pnlMesas.setLayout(pnlMesasLayout);
+        pnlMesasLayout.setHorizontalGroup(
+            pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMesasLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlMesasLayout.createSequentialGroup()
+                        .addComponent(tglMesaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tglMesaDos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMesasLayout.createSequentialGroup()
+                        .addComponent(tglMesaCuatro, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tglMesaSiete, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tglMesaCinco, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(75, 75, 75)
+                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tglMesaSeis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tglMesaTres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tglMesaOcho, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        pnlMesasLayout.setVerticalGroup(
+            pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMesasLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tglMesaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tglMesaDos, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tglMesaTres, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(pnlMesasLayout.createSequentialGroup()
+                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tglMesaSeis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tglMesaCinco, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tglMesaOcho, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tglMesaSiete, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tglMesaCuatro, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlMenuMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
+            .addComponent(pnlMenuMesas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tglMesaUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesaUnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tglMesaUnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +244,21 @@ public class Mesas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCobrarMesa;
+    private javax.swing.JButton btnIngresarPedido;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFotoMenuMesas;
+    private javax.swing.JLabel lblPedidoActual;
+    private javax.swing.JList<String> lstPedidoActual;
+    private javax.swing.JPanel pnlMenuMesas;
+    private javax.swing.JPanel pnlMesas;
+    private javax.swing.JToggleButton tglMesaCinco;
+    private javax.swing.JToggleButton tglMesaCuatro;
+    private javax.swing.JToggleButton tglMesaDos;
+    private javax.swing.JToggleButton tglMesaOcho;
+    private javax.swing.JToggleButton tglMesaSeis;
+    private javax.swing.JToggleButton tglMesaSiete;
+    private javax.swing.JToggleButton tglMesaTres;
+    private javax.swing.JToggleButton tglMesaUno;
     // End of variables declaration//GEN-END:variables
 }

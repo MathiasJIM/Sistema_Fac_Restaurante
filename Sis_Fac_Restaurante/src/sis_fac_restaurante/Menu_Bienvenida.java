@@ -17,7 +17,7 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        foto = new javax.swing.JLabel();
+        lblFot = new javax.swing.JLabel();
         lblTitulo2 = new javax.swing.JLabel();
         pnlInicioSesion = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
@@ -32,7 +32,7 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sis_fac_restaurante/ripichip´s.png"))); // NOI18N
+        lblFot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sis_fac_restaurante/ripichip´s.png"))); // NOI18N
 
         lblTitulo2.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
         lblTitulo2.setText("Ripichip's Fast Food");
@@ -140,7 +140,7 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(pnlInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)))
-                .addComponent(foto))
+                .addComponent(lblFot))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +153,7 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
                 .addComponent(pnlInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFot, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
@@ -213,7 +213,7 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JLabel foto;
+    private javax.swing.JLabel lblFot;
     private javax.swing.JLabel lblInicioSesion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPista;
