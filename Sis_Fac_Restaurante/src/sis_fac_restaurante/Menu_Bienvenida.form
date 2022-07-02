@@ -47,7 +47,7 @@
                       <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="foto" min="-2" max="-2" attributes="0"/>
+              <Component id="lblFot" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,14 +63,14 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <Component id="foto" min="-2" pref="327" max="-2" attributes="0"/>
+              <Component id="lblFot" min="-2" pref="327" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="foto">
+    <Component class="javax.swing.JLabel" name="lblFot">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sis_fac_restaurante/ripichip&#xb4;s.png"/>
