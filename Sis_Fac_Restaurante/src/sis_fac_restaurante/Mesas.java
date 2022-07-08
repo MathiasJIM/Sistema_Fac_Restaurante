@@ -4,6 +4,7 @@ public class Mesas extends javax.swing.JFrame {
 
     public int mesaSeleccionada = 0;
     Ingresar_Pedido ingresarPedido = new Ingresar_Pedido();
+    Cobrar_Mesa cobrarMesa = new Cobrar_Mesa();
     
     public Mesas() {
         initComponents();
@@ -116,6 +117,11 @@ public class Mesas extends javax.swing.JFrame {
         btnCobrarMesa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCobrarMesa.setText("Cobrar Mesa");
         btnCobrarMesa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnCobrarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCobrarMesaActionPerformed(evt);
+            }
+        });
 
         btnIngresarPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnIngresarPedido.setText("Ingresar Pedido");
@@ -326,6 +332,11 @@ public class Mesas extends javax.swing.JFrame {
         this.setVisible(false);
         ingresarPedido.show();
     }//GEN-LAST:event_btnIngresarPedidoActionPerformed
+
+    private void btnCobrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarMesaActionPerformed
+        this.setVisible(false);
+        cobrarMesa.show();
+    }//GEN-LAST:event_btnCobrarMesaActionPerformed
 
     /**
      * @param args the command line arguments
