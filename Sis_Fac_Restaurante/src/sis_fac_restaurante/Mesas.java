@@ -1,5 +1,7 @@
 package sis_fac_restaurante;
 
+import javax.swing.JOptionPane;
+
 public class Mesas extends javax.swing.JFrame {
 
     public int mesaSeleccionada = 0;
@@ -329,7 +331,7 @@ public class Mesas extends javax.swing.JFrame {
     }//GEN-LAST:event_tglMesa8ActionPerformed
 
     private void btnIngresarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPedidoActionPerformed
-        this.setVisible(false);
+         this.setVisible(false);
         ingresarPedido.show();
     }//GEN-LAST:event_btnIngresarPedidoActionPerformed
 

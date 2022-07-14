@@ -56,15 +56,19 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
         lblPista.setForeground(new java.awt.Color(255, 255, 255));
         lblPista.setText("Pista contraseña: Nombre del profe más tuanis de programación");
 
+        txtNombre.setNextFocusableComponent(txtContrasena);
+
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnIngresar.setText("Ingresar");
         btnIngresar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnIngresar.setNextFocusableComponent(txtNombre);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
 
+        txtContrasena.setNextFocusableComponent(btnIngresar);
         txtContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContrasenaActionPerformed(evt);
