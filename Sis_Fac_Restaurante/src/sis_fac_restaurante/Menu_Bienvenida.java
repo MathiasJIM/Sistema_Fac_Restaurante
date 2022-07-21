@@ -1,12 +1,15 @@
-
 package sis_fac_restaurante;
 
+//Se importa el JOPtionPane
 import javax.swing.JOptionPane;
 
+//Source del Menu_Bienvenida
 public class Menu_Bienvenida extends javax.swing.JFrame {
-
+    
+    //Se declara la variable de nombreUsuario
     public String nombreUsuario = "";
     
+    //Se declara el formulario Mesas como una variable para llamar luego en el programa
     Mesas menuMesas = new Mesas();
     
     public Menu_Bienvenida() {
@@ -30,6 +33,7 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
         lblTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Facturacion Ripichip's");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lblFot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sis_fac_restaurante/ripichip´s.png"))); // NOI18N
@@ -165,9 +169,12 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Al presionar el boton "Ingresar"
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        //Se guarda el contenido de txtNombre en la variable nombreUsuario
         nombreUsuario = txtNombre.getText();
         
+        //Condicional para revisar si la contraseña esta en lo correcto
         if (!"Robert".equals(txtContrasena.getText()))
         {
             JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA, INTENTELO DE NUEVO...", "Contraseña incorrecta", JOptionPane.OK_OPTION);
@@ -175,13 +182,14 @@ public class Menu_Bienvenida extends javax.swing.JFrame {
         }
         else
         {
+            //Si la contraseña esta en lo correcto se ingresa al menuMesas que va a ser el Formulario central del programa
             this.setVisible(false);
             menuMesas.show();
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtContrasenaActionPerformed
 
     public static void main(String args[]) {
