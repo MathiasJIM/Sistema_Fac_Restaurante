@@ -182,6 +182,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
             }
         ));
         tblProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblProductos.setEnabled(false);
         jScrollPane4.setViewportView(tblProductos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -303,7 +304,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
                         //Se ingresa el registro en el primer espacio vacio de pedidosMesas[] con la info del prodcuto deseado y la cantidad de productos ordenados
                         principal.pedidosMesas[i] = new Pedidos(mesa.mesaSeleccionada, Integer.parseInt(txtCantidad.getText()), menu.menuEntero[y][2], Integer.parseInt(menu.menuEntero[y][3]), (Integer.parseInt(menu.menuEntero[y][3])) * (Integer.parseInt(txtCantidad.getText())));
                         
-                        JOptionPane.showMessageDialog(null, Integer.toString(principal.pedidosMesas[i].NumeroMesa) + " " + principal.pedidosMesas[i].CantidadProducto + " " + principal.pedidosMesas[i].NombreProducto + " " + principal.pedidosMesas[i].PrecioUnitario + " " + principal.pedidosMesas[i].PrecioFinal);
+                        JOptionPane.showMessageDialog(null, "Orden Ingresada con Exito:\n\nNumero de Mesa: " + mesa.mesaSeleccionada + "\nCantidad: " + txtCantidad.getText() + "\nProducto: " + menu.menuEntero[y][2] + "\nPrecio Unitario: " + menu.menuEntero[y][3] + "\nPrecio Total: " + (Integer.parseInt(menu.menuEntero[y][3])) * (Integer.parseInt(txtCantidad.getText())));
                     }
                 }
                 //Luego de detectar el espacio vacio en el arreglo y rellenarlo con el registro de la orden, se sale del ciclo
