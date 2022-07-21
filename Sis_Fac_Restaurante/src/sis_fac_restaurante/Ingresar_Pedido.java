@@ -1,12 +1,27 @@
 
 package sis_fac_restaurante;
 
+
+//Se importa DefaultTableModel para el control de la tabla en el formulario
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+//Source de Ingresar_Pedido
 public class Ingresar_Pedido extends javax.swing.JFrame {
 
+    //Se declara la Menus como variable para poder accesar a todos los menus del restaurante y mostrarlos en la tabla del formulario
     Menus menu = new Menus();
+    
+    //Se declara la Mesas como variable para poder accesar a la variable mesaSeleccionada mas adelante en el programa
+    static Mesas mesa = new Mesas();
+    
+    //Se declara la clase principal en una variable para pode accesar a el arreglo pedidosMesas donde se van a encontrar todos los pedidos del programa
+    Sis_Fac_Restaurante principal = new Sis_Fac_Restaurante();
+    
+    //Variable para guardar la cantidad de productos que se van a demostrar en la tabla
+    public int cantidadProductos;
+    
+    public Funciones funciones = new Funciones();
     
     public Ingresar_Pedido() {
         initComponents();
@@ -65,6 +80,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ingresar Pedido");
         setBackground(new java.awt.Color(163, 96, 10));
 
         jPanel1.setBackground(new java.awt.Color(163, 96, 10));
@@ -81,6 +97,11 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         });
 
         btnLicores.setText("Licores");
+        btnLicores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLicoresActionPerformed(evt);
+            }
+        });
 
         txtCodigoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtCodigoProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -99,10 +120,26 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         txtCantidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnBebidasNaturales.setText("Bebidas Naturales");
+        btnBebidasNaturales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBebidasNaturalesActionPerformed(evt);
+            }
+        });
 
         btnVegetariano.setText("Vegetariano");
+        btnVegetariano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVegetarianoActionPerformed(evt);
+            }
+        });
 
         btnGaseosas.setText("Gaseosas");
+        btnGaseosas.setActionCommand("Gaseosas   ");
+        btnGaseosas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGaseosasActionPerformed(evt);
+            }
+        });
 
         lblCodProducto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCodProducto.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,47 +178,49 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(lblProductos)
-                .addGap(167, 167, 167)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTipico, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLicores, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnComidaRapida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBebidasNaturales))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVegetariano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGaseosas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCodProducto)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCantidad))
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(lblProductos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCodProducto)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCantidad)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCategorias)
-                        .addGap(163, 163, 163))))
+                        .addGap(57, 57, 57))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTipico, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLicores, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnComidaRapida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBebidasNaturales))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVegetariano)
+                            .addComponent(btnGaseosas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(30, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCategorias)
+                .addGap(163, 163, 163))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,43 +262,74 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Al presionar el boton Guardar
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnTipicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipicoActionPerformed
-        
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblProductos.getModel();
-        modeloTabla.setRowCount(menu.menuTipico.length);
-        modeloTabla.setColumnCount(3);
-        
-        for(int i=0; i<3; i++)
+        //Ciclo para verificar en cual espacio vacio del arreglo ingresar la siguiente orden
+        for (int i = 0; i<100; i++)
         {
-            for(int j=0; j<(menu.menuTipico.length); j++)
+            //Si detecta un registro vacio en el arreglo, ingresa para agregar la info en este espacio
+            if (principal.pedidosMesas[i].NumeroMesa == 0)
             {
-                tblProductos.setValueAt(menu.menuTipico[j][i], j, i);
+                //Recorre el menu entero en busca del producto y la informacion del producto para el registro
+                for(int y = 0; y<(menu.menuEntero.length); y++)
+                {
+                    //Si el ID del producto en el menuEntero coincide con el ID del producto que se desea ordenar, ingresa el registro con la informacion de este producto
+                    if (menu.menuEntero[y][1].equals(txtCodigoProducto.getText()))
+                    {
+                        //Se ingresa el registro en el primer espacio vacio de pedidosMesas[] con la info del prodcuto deseado y la cantidad de productos ordenados
+                        principal.pedidosMesas[i] = new Pedidos(mesa.mesaSeleccionada, Integer.parseInt(txtCantidad.getText()), menu.menuEntero[y][2], Integer.parseInt(menu.menuEntero[y][3]), (Integer.parseInt(menu.menuEntero[y][3])) * (Integer.parseInt(txtCantidad.getText())));
+                        
+                        JOptionPane.showMessageDialog(null, Integer.toString(principal.pedidosMesas[i].NumeroMesa) + " " + principal.pedidosMesas[i].CantidadProducto + " " + principal.pedidosMesas[i].NombreProducto + " " + principal.pedidosMesas[i].PrecioUnitario + " " + principal.pedidosMesas[i].PrecioFinal);
+                    }
+                }
+                //Luego de detectar el espacio vacio en el arreglo y rellenarlo con el registro de la orden, se sale del ciclo
+                break;
             }
         }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    //Al seleccionar el boton para ver el menu Tipico
+    private void btnTipicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipicoActionPerformed
+        funciones.Mostrar_Tabla("t", tblProductos);
     }//GEN-LAST:event_btnTipicoActionPerformed
 
+    //Cuando se presione btnComidaRapida
     private void btnComidaRapidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComidaRapidaActionPerformed
-        // TODO add your handling code here:
+        funciones.Mostrar_Tabla("r", tblProductos);
     }//GEN-LAST:event_btnComidaRapidaActionPerformed
 
+    
     private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProductoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtCodigoProductoActionPerformed
+
+    private void btnVegetarianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVegetarianoActionPerformed
+        funciones.Mostrar_Tabla("v", tblProductos);
+    }//GEN-LAST:event_btnVegetarianoActionPerformed
+
+    private void btnLicoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLicoresActionPerformed
+        funciones.Mostrar_Tabla("l", tblProductos);
+    }//GEN-LAST:event_btnLicoresActionPerformed
+
+    private void btnBebidasNaturalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBebidasNaturalesActionPerformed
+        funciones.Mostrar_Tabla("n", tblProductos);
+    }//GEN-LAST:event_btnBebidasNaturalesActionPerformed
+
+    private void btnGaseosasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGaseosasActionPerformed
+        funciones.Mostrar_Tabla("g", tblProductos);
+    }//GEN-LAST:event_btnGaseosasActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,11 +1,18 @@
 package sis_fac_restaurante;
 
+//Se importa JOptionPane
 import javax.swing.JOptionPane;
 
+//Source de Mesas
 public class Mesas extends javax.swing.JFrame {
 
-    public int mesaSeleccionada = 0;
+    //La variable mesaSeleccionada va a contener la mesa seleccionada para ingresarle un pedido o sacar la cuenta
+    public static int mesaSeleccionada = 0;
+            
+    //Se declara el formulario Ingresar_Pedido como variable para ser llamado mas adelante en el programa
     Ingresar_Pedido ingresarPedido = new Ingresar_Pedido();
+    
+    //Se declara el formulario Cobrar_Mesa como variable para ser llamado mas adelante en el programa
     Cobrar_Mesa cobrarMesa = new Cobrar_Mesa();
     
     public Mesas() {
@@ -34,6 +41,7 @@ public class Mesas extends javax.swing.JFrame {
         lblPedidoActual = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mesas");
         setBackground(java.awt.Color.darkGray);
 
         pnlMesas.setBackground(java.awt.Color.darkGray);
@@ -230,15 +238,17 @@ public class Mesas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMesas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Al seleccionar la mesa 1
     private void tglMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa1ActionPerformed
         
+        //Mesa seleccionada se cambia a 1 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 1;
         tglMesa2.setSelected(false);
         tglMesa3.setSelected(false);
@@ -249,8 +259,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa1ActionPerformed
 
+    //Al seleccionar la mesa 2
     private void tglMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa2ActionPerformed
         
+        //Mesa seleccionada se cambia a 2 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 2;
         tglMesa1.setSelected(false);
         tglMesa3.setSelected(false);
@@ -261,8 +273,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa2ActionPerformed
 
+    //Al seleccionar la mesa 3
     private void tglMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa3ActionPerformed
         
+        //Mesa seleccionada se cambia a 3 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 3;
         tglMesa1.setSelected(false);
         tglMesa2.setSelected(false);
@@ -273,8 +287,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa3ActionPerformed
 
+    //Al seleccionar la mesa 4
     private void tglMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa4ActionPerformed
         
+        //Mesa seleccionada se cambia a 4 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 4;
         tglMesa2.setSelected(false);
         tglMesa3.setSelected(false);
@@ -285,8 +301,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa4ActionPerformed
 
+    //Al seleccionar la mesa 5
     private void tglMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa5ActionPerformed
 
+        //Mesa seleccionada se cambia a 5 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 5;
         tglMesa2.setSelected(false);
         tglMesa3.setSelected(false);
@@ -297,7 +315,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa5ActionPerformed
 
+    //Al seleccionar la mesa 6
     private void tglMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa6ActionPerformed
+        
+        //Mesa seleccionada se cambia a 6 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 6;
         tglMesa2.setSelected(false);
         tglMesa3.setSelected(false);
@@ -308,7 +329,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa6ActionPerformed
 
+    //Al seleccionar la mesa 7
     private void tglMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa7ActionPerformed
+        
+        //Mesa seleccionada se cambia a 7 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 7;
         tglMesa2.setSelected(false);
         tglMesa3.setSelected(false);
@@ -319,7 +343,10 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa8.setSelected(false);
     }//GEN-LAST:event_tglMesa7ActionPerformed
 
+    //Al seleccionar la mesa 8
     private void tglMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglMesa8ActionPerformed
+        
+        //Mesa seleccionada se cambia a 8 y se deseleccionan el resto de mesas en el formulario
         mesaSeleccionada = 8;
         tglMesa2.setSelected(false);
         tglMesa3.setSelected(false);
@@ -330,12 +357,28 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa1.setSelected(false);
     }//GEN-LAST:event_tglMesa8ActionPerformed
 
+    //Al presionar el boton Ingresar Pedido
     private void btnIngresarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPedidoActionPerformed
-         this.setVisible(false);
-        ingresarPedido.show();
+        
+        /*Se verifica que el usuario haya seleccionado una mesa antes de presionar el boton, y si esto no se cumple,
+          se le informa al usuario que debe de seleccionar una mesa antes de continuar*/
+        if (mesaSeleccionada == 0)
+        {
+            JOptionPane.showMessageDialog(null, "ERROR!\nFavor seleccionar una mesa antes de continuar...");
+        }
+        
+        //De no ser asi, se procede a abrir el formulario Ingresar Pedido
+        else
+        {
+            this.setVisible(false);
+            ingresarPedido.show();
+        }
     }//GEN-LAST:event_btnIngresarPedidoActionPerformed
 
+    //Al presionar el boton Cobrar Mesa
     private void btnCobrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarMesaActionPerformed
+        
+        //Se muestra el formulario de Cobrar Mesa
         this.setVisible(false);
         cobrarMesa.show();
     }//GEN-LAST:event_btnCobrarMesaActionPerformed
