@@ -4,7 +4,6 @@ package sis_fac_restaurante;
 
 //Se importa DefaultTableModel para el control de la tabla en el formulario
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 //Source de Ingresar_Pedido
 public class Ingresar_Pedido extends javax.swing.JFrame {
@@ -12,7 +11,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
     //Se declara la Menus como variable para poder accesar a todos los menus del restaurante y mostrarlos en la tabla del formulario
     Menus menu = new Menus();
     
-    //Se declara la Mesas como variable para poder accesar a la variable mesaSeleccionada mas adelante en el programa
+    //Se declara la Mesas como variable para poder accesar a la variable mesaSeleccionada mas adelante en el programa y mostrar de nuevo el form de mesas al salir
     static Mesas mesa = new Mesas();
     
     //Se declara la clase principal en una variable para pode accesar a el arreglo pedidosMesas donde se van a encontrar todos los pedidos del programa
@@ -21,6 +20,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
     //Variable para guardar la cantidad de productos que se van a demostrar en la tabla
     public int cantidadProductos;
     
+    //Se crea la variable funciones para traerse la funcion MostrarTabla
     public Funciones funciones = new Funciones();
     
     public Ingresar_Pedido() {
@@ -118,6 +118,11 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         });
 
         txtCantidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
 
         btnBebidasNaturales.setText("Bebidas Naturales");
         btnBebidasNaturales.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +167,11 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         lblProductos.setText("Productos");
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,6 +182,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
             }
         ));
         tblProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblProductos.setEnabled(false);
         jScrollPane4.setViewportView(tblProductos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -186,37 +197,35 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
                         .addComponent(lblCodProducto)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCantidad)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(57, 57, 57))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTipico, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLicores, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnComidaRapida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBebidasNaturales))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnVegetariano)
-                            .addComponent(btnGaseosas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(30, Short.MAX_VALUE))))
+                        .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(lblCantidad)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnTipico, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnLicores, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(41, 41, 41)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnComidaRapida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBebidasNaturales))
+                            .addGap(36, 36, 36)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnVegetariano)
+                                .addComponent(btnGaseosas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCategorias)
@@ -225,13 +234,14 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(lblProductos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(lblCategorias)
                         .addGap(18, 18, 18)
@@ -245,17 +255,17 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnBebidasNaturales, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnGaseosas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCodProducto)
                             .addComponent(lblCantidad)
                             .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -266,7 +276,10 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -291,7 +304,7 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
                         //Se ingresa el registro en el primer espacio vacio de pedidosMesas[] con la info del prodcuto deseado y la cantidad de productos ordenados
                         principal.pedidosMesas[i] = new Pedidos(mesa.mesaSeleccionada, Integer.parseInt(txtCantidad.getText()), menu.menuEntero[y][2], Integer.parseInt(menu.menuEntero[y][3]), (Integer.parseInt(menu.menuEntero[y][3])) * (Integer.parseInt(txtCantidad.getText())));
                         
-                        JOptionPane.showMessageDialog(null, Integer.toString(principal.pedidosMesas[i].NumeroMesa) + " " + principal.pedidosMesas[i].CantidadProducto + " " + principal.pedidosMesas[i].NombreProducto + " " + principal.pedidosMesas[i].PrecioUnitario + " " + principal.pedidosMesas[i].PrecioFinal);
+                        JOptionPane.showMessageDialog(null, "Orden Ingresada con Exito:\n\nNumero de Mesa: " + mesa.mesaSeleccionada + "\nCantidad: " + txtCantidad.getText() + "\nProducto: " + menu.menuEntero[y][2] + "\nPrecio Unitario: " + menu.menuEntero[y][3] + "\nPrecio Total: " + (Integer.parseInt(menu.menuEntero[y][3])) * (Integer.parseInt(txtCantidad.getText())));
                     }
                 }
                 //Luego de detectar el espacio vacio en el arreglo y rellenarlo con el registro de la orden, se sale del ciclo
@@ -305,32 +318,44 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         funciones.Mostrar_Tabla("t", tblProductos);
     }//GEN-LAST:event_btnTipicoActionPerformed
 
-    //Cuando se presione btnComidaRapida
+    //Al seleccionar el boton para ver el menu Comida Rapida
     private void btnComidaRapidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComidaRapidaActionPerformed
         funciones.Mostrar_Tabla("r", tblProductos);
     }//GEN-LAST:event_btnComidaRapidaActionPerformed
 
-    
-    private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProductoActionPerformed
-
-    }//GEN-LAST:event_txtCodigoProductoActionPerformed
-
+    //Al seleccionar el boton para ver el menu Vegetariano
     private void btnVegetarianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVegetarianoActionPerformed
         funciones.Mostrar_Tabla("v", tblProductos);
     }//GEN-LAST:event_btnVegetarianoActionPerformed
 
+    //Al seleccionar el boton para ver el menu Licores
     private void btnLicoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLicoresActionPerformed
         funciones.Mostrar_Tabla("l", tblProductos);
     }//GEN-LAST:event_btnLicoresActionPerformed
 
+    //Al seleccionar el boton para ver el menu Frescos Naturales
     private void btnBebidasNaturalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBebidasNaturalesActionPerformed
         funciones.Mostrar_Tabla("n", tblProductos);
     }//GEN-LAST:event_btnBebidasNaturalesActionPerformed
 
+    //Al seleccionar el boton para ver el menu Gaseosas
     private void btnGaseosasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGaseosasActionPerformed
         funciones.Mostrar_Tabla("g", tblProductos);
     }//GEN-LAST:event_btnGaseosasActionPerformed
 
+    //Al presionar el boton Salir
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.setVisible(false);
+        mesa.setVisible(true);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }    
     /**
      * @param args the command line arguments
      */
