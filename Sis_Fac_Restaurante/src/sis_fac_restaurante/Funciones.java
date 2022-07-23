@@ -7,10 +7,16 @@ import javax.swing.table.TableColumnModel;
 
 public class Funciones {
     
+    //Se declara cantidad de Productos que va a contar los productos que se van a desplegar en el formulario
     public int cantidadProductos;
+    
+    //Se declara menu para poder ingresar a el menu del sistema
     Menus menu = new Menus();
     Sis_Fac_Restaurante principal = new Sis_Fac_Restaurante();
     
+    
+    /*ESTA FUNCION SE VA A ENCARGAR DE RECIBIR LA CATEGORIA DE EL MENU Y LA TABLA DEL FORMULARIO PARA IMPRIMIR DENTRO DE LA TABLA
+      TODOS LOS PRODUCTOS DE ESA CATEGORIA DEL MENU                                                                              */
     public void Mostrar_Tabla(String categoria, javax.swing.JTable tblProductos)
     {
         //Se inicializa cantidad productos en 0 que va a contar los productos que se van a desplegar en el formulario
