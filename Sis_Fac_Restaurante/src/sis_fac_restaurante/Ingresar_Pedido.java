@@ -346,11 +346,12 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         funciones.Mostrar_Tabla("g", tblProductos);
     }//GEN-LAST:event_btnGaseosasActionPerformed
 
+<<<<<<< Updated upstream
     //Al presionar el boton Salir
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.setVisible(false);
         mesa.setVisible(true);
-    }                                        
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
@@ -359,8 +360,14 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
     private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }    
-    
+=======
+    //Si se selecciona el boton Salir
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        //this.setVisible(false);
+        //menuMesas.show();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
