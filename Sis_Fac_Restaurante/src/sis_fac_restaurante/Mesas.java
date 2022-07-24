@@ -15,6 +15,9 @@ public class Mesas extends javax.swing.JFrame {
     //Se declara el formulario Cobrar_Mesa como variable para ser llamado mas adelante en el programa
     Cobrar_Mesa cobrarMesa = new Cobrar_Mesa();
     
+    //Variable para llamar a la funcion de mostrar pedidos
+    Funciones funciones = new Funciones();
+    
     public Mesas() {
         initComponents();
     }
@@ -281,6 +284,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa1ActionPerformed
 
     //Al seleccionar la mesa 2
@@ -295,6 +301,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa2ActionPerformed
 
     //Al seleccionar la mesa 3
@@ -309,6 +318,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa3ActionPerformed
 
     //Al seleccionar la mesa 4
@@ -323,6 +335,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa4ActionPerformed
 
     //Al seleccionar la mesa 5
@@ -337,6 +352,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa5ActionPerformed
 
     //Al seleccionar la mesa 6
@@ -351,6 +369,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa1.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa6ActionPerformed
 
     //Al seleccionar la mesa 7
@@ -365,6 +386,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa1.setSelected(false);
         tglMesa8.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa7ActionPerformed
 
     //Al seleccionar la mesa 8
@@ -379,6 +403,9 @@ public class Mesas extends javax.swing.JFrame {
         tglMesa6.setSelected(false);
         tglMesa7.setSelected(false);
         tglMesa1.setSelected(false);
+        
+        //Se llama a la funcion que se encarga de mostrar los pedidos actuales de la mesa
+        funciones.Mostrar_Pedidos(tblPedidoActual, mesaSeleccionada);
     }//GEN-LAST:event_tglMesa8ActionPerformed
 
     //Al presionar el boton Ingresar Pedido
