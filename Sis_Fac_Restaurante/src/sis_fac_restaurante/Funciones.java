@@ -98,19 +98,13 @@ public class Funciones {
         //Ciclo para rellenar la tabla de el formulario con los valores dentro del menu
         for (int j=0; j<(principal.pedidosMesas.length); j++)
         {
-            for (int i=0; i<3; i++)
-            {
-                //Si la categoria del producto en el menu coincide con lo que se requiere, se acomoda en la tabla
-                if (numeroMesa == principal.pedidosMesas[j].NumeroMesa)
-                {
-                    //Se agrega 1 por 1 los valores del menu en la tabla, duplicando el menu en la tabla del formulario
-                    tblPedidos.setValueAt(principal.pedidosMesas[j], cantidadProductos, i);
-                }
-            }
-            
-            //Condicion para contar la cantidad de productos en la tabla
+            //Si la categoria del producto en el menu coincide con lo que se requiere, se acomoda en la tabla
             if (numeroMesa == principal.pedidosMesas[j].NumeroMesa)
             {
+                //Se agrega 1 por 1 los valores del menu en la tabla, duplicando el menu en la tabla del formulario
+                tblPedidos.setValueAt(principal.pedidosMesas[j].CantidadProducto, cantidadProductos, 0);
+                tblPedidos.setValueAt(principal.pedidosMesas[j].NombreProducto, cantidadProductos, 1);
+                
                 //Se suma 1 valor a la cantidad de productos para determinar el tamaño de la tabla al final del ciclo
                 cantidadProductos += 1;
             }
