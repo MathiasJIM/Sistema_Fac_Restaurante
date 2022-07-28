@@ -88,8 +88,8 @@ public class Funciones {
         modeloTabla.setColumnCount(2);
         
         //Se le da tamaño a las columnas
-        columnSize.getColumn(0).setMaxWidth(30);
-        columnSize.getColumn(0).setPreferredWidth(30);
+        columnSize.getColumn(0).setMaxWidth(40);
+        columnSize.getColumn(0).setPreferredWidth(40);
         
         //Se Centran los valores de las columnas en la tabla
         centradoColumna.setHorizontalAlignment(0);
