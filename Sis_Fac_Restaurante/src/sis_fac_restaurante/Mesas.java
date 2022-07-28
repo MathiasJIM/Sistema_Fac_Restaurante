@@ -157,7 +157,7 @@ public class Mesas extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Cantidad", "Producto"
+                "Cant.", "Producto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
