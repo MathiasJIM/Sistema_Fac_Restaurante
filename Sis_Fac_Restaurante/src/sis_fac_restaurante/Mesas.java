@@ -432,6 +432,9 @@ public class Mesas extends javax.swing.JFrame {
         //Se muestra el formulario de Cobrar Mesa
         this.setVisible(false);
         cobrarMesa.show();
+        
+        //Luego de mostrar el form de cobrarMesa, va a imprimir de una vez la tabla de la cuenta pendiente de la mesa seleccionada
+        funciones.Mostrar_Cuenta(cobrarMesa.getTblPedidosCobrar(), mesaSeleccionada);
     }//GEN-LAST:event_btnCobrarMesaActionPerformed
 
     /**

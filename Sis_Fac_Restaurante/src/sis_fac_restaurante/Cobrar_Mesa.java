@@ -2,8 +2,13 @@
 package sis_fac_restaurante;
 
 //Source de Cobrar_Mesa
+import javax.swing.JTable;
+
 public class Cobrar_Mesa extends javax.swing.JFrame {
 
+    //Se crea la variable que va a poseer las funciones
+    public Funciones funciones = new Funciones();;
+    
     public Cobrar_Mesa() {
         initComponents();
     }
@@ -14,8 +19,6 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblCobrarMesa = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstPedido = new javax.swing.JList<>();
         lblSubtotal = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
         btnPagar = new javax.swing.JButton();
@@ -29,6 +32,8 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblTotalFinal = new javax.swing.JLabel();
         txtMontoCliente = new javax.swing.JTextField();
         lblMontoCliente = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPedidosCobrar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cobrar Mesa");
@@ -39,17 +44,20 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblCobrarMesa.setForeground(new java.awt.Color(255, 255, 255));
         lblCobrarMesa.setText("COBRAR MESA");
 
-        lstPedido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jScrollPane1.setViewportView(lstPedido);
-
         lblSubtotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblSubtotal.setForeground(new java.awt.Color(255, 255, 255));
         lblSubtotal.setText("Subtotal:");
 
+        txtSubtotal.setEditable(false);
         txtSubtotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnPagar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPagar.setText("Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
 
@@ -61,14 +69,17 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblServicio.setForeground(new java.awt.Color(255, 255, 255));
         lblServicio.setText("10% Servicio:");
 
+        txtServicio.setEditable(false);
         txtServicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblImpuestos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblImpuestos.setForeground(new java.awt.Color(255, 255, 255));
         lblImpuestos.setText("13% I.V.A:");
 
+        txtImpuestos.setEditable(false);
         txtImpuestos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtTotalFinal.setEditable(false);
         txtTotalFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTotalFinal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -79,6 +90,24 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblMontoCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblMontoCliente.setText("Monto Cliente:");
 
+        tblPedidosCobrar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mesa", "Producto", "Cantidad", "P. Unitario", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblPedidosCobrar);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,52 +115,52 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addGap(178, 178, 178)
                         .addComponent(lblPedido)))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblImpuestos)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtImpuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblServicio)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTotalFinal)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTotalFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblMontoCliente)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMontoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblSubtotal)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCobrarMesa)
-                            .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
                         .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblImpuestos)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtImpuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblServicio)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblTotalFinal)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblMontoCliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMontoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblSubtotal)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblCobrarMesa)
+                                        .addGap(47, 47, 47)))))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lblPedido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addComponent(lblCobrarMesa)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -149,31 +178,42 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTotalFinal)
                             .addComponent(txtTotalFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68)
+                        .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMontoCliente)
                             .addComponent(txtMontoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblPedido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    //Al presionar el boton btnPagar
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        
+    }//GEN-LAST:event_btnPagarActionPerformed
 
 
     public static void main(String args[]) {
@@ -212,7 +252,7 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCobrarMesa;
     private javax.swing.JLabel lblImpuestos;
     private javax.swing.JLabel lblMontoCliente;
@@ -220,11 +260,16 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
     private javax.swing.JLabel lblServicio;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotalFinal;
-    private javax.swing.JList<String> lstPedido;
+    private javax.swing.JTable tblPedidosCobrar;
     private javax.swing.JTextField txtImpuestos;
     private javax.swing.JTextField txtMontoCliente;
     private javax.swing.JTextField txtServicio;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotalFinal;
     // End of variables declaration//GEN-END:variables
+
+    //Se crea el getter de tblPedidos para utilizarlo en Mesas.java
+    public JTable getTblPedidosCobrar() {
+        return tblPedidosCobrar;
+    }
 }
