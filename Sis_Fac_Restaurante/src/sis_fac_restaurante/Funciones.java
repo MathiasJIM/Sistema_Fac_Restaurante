@@ -17,6 +17,12 @@ public class Funciones {
     //La variable principal, va a conectar con el form principal que posee la matriz con los pedidos que se van a realizar
     Sis_Fac_Restaurante principal = new Sis_Fac_Restaurante();
     
+    //Variable que va a sumar el precio subtotal sumando todas las ordenes
+    public int sumaSubtotal;
+    public int Servicio;
+    public int Impuestos;
+    public int montoFinal;
+    
     //Funcion que se va a encargar de mostrar los diferentes menus del restaurante
     public void Mostrar_Tabla(String categoria, javax.swing.JTable tblProductos)
     {
@@ -124,7 +130,7 @@ public class Funciones {
     
     
     //Funcion que se va a encargar de mostrar la cuenta(factura) de la mesa que se seleccione al precionar el btnCobrarMesa
-    public void Mostrar_Cuenta(javax.swing.JTable tblPedidosCobrar, int numeroMesa)
+    public void Mostrar_Cuenta(javax.swing.JTable tblPedidosCobrar, int numeroMesa, javax.swing.JTextField txtsubtotal, javax.swing.JTextField txtservicio, javax.swing.JTextField txtimpuestos, javax.swing.JTextField txtFinal)
     {
         //Se inicializa cantidad productos en 0 que va a contar los productos que se van a desplegar en el formulario
         cantidadProductos = 0;
@@ -181,5 +187,38 @@ public class Funciones {
         
         //Se ajusta el tamaño de la tabla dependiendo del numero de productos en el menu
         modeloTabla.setRowCount(cantidadProductos);
+        
+        //------------------------A continuacion se procede a rellenar los text fields del formulario--------------------------//
+        
+        //Se declara las variables que se van a utilizar para dar la factura final, en 0
+        sumaSubtotal = 0;
+        Servicio = 0;
+        Impuestos = 0;
+        montoFinal = 0;
+        
+        //Ciclo para acumular el subtotal de la cuenta en la variable subtotal
+        for (int i=0; i<(principal.pedidosMesas.length); i++)
+        {
+            if (numeroMesa == principal.pedidosMesas[i].NumeroMesa)
+            {
+                sumaSubtotal = sumaSubtotal + principal.pedidosMesas[i].PrecioFinal;
+            }
+        }
+        
+        //Se muestra el subtotal en el textbox de Subtotal
+        txtsubtotal.setText(String.valueOf(sumaSubtotal));
+        
+        //Se muestra el subtotal en el textbox de Servicio(10%)
+        Servicio = (sumaSubtotal/100)*10;
+        txtservicio.setText(String.valueOf(Servicio));
+        
+        //Se muestra el subtotal en el textbox de Impuestos(13%)
+        Impuestos = (sumaSubtotal/100)*13;
+        txtimpuestos.setText(String.valueOf(Impuestos));
+        
+        //Se muestra el subtotal en el textbox del monto final
+        montoFinal = sumaSubtotal + Servicio + Impuestos;
+        txtFinal.setText(String.valueOf(montoFinal));
+        
     }
 }

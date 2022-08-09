@@ -3,6 +3,8 @@ package sis_fac_restaurante;
 //Se importa JOptionPane
 import javax.swing.JOptionPane;
 
+import javax.swing.JTextField;
+
 //Source de Mesas
 public class Mesas extends javax.swing.JFrame {
 
@@ -433,8 +435,8 @@ public class Mesas extends javax.swing.JFrame {
         this.setVisible(false);
         cobrarMesa.show();
         
-        //Luego de mostrar el form de cobrarMesa, va a imprimir de una vez la tabla de la cuenta pendiente de la mesa seleccionada
-        funciones.Mostrar_Cuenta(cobrarMesa.getTblPedidosCobrar(), mesaSeleccionada);
+        //Luego de mostrar el form de cobrarMesa, va a imprimir de una vez la tabla de la cuenta pendiente de la mesa seleccionada y los montos finales para la factura
+        funciones.Mostrar_Cuenta(cobrarMesa.getTblPedidosCobrar(), mesaSeleccionada, cobrarMesa.getTxtSubtotal(), cobrarMesa.getTxtServicio(), cobrarMesa.getTxtImpuestos(), cobrarMesa.getTxtTotalFinal());
     }//GEN-LAST:event_btnCobrarMesaActionPerformed
 
     /**

@@ -314,6 +314,10 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
                 break;
             }
         }
+        
+        //Se borran los valores en las casillas
+        txtCantidad.setText("");
+        txtCodigoProducto.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     //Al seleccionar el boton para ver el menu Tipico

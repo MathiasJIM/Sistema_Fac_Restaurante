@@ -2,12 +2,20 @@
 package sis_fac_restaurante;
 
 //Source de Cobrar_Mesa
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class Cobrar_Mesa extends javax.swing.JFrame {
 
     //Se crea la variable que va a poseer las funciones
     public Funciones funciones = new Funciones();;
+    
+    //Se crea la variable que va a llamar al form Mesas de nuevo
+    public static Mesas mesas = new Mesas();
+    
+    //Se crea la variable que va a llamar el form principal
+    public Sis_Fac_Restaurante principal = new Sis_Fac_Restaurante();
     
     public Cobrar_Mesa() {
         initComponents();
@@ -49,6 +57,7 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblSubtotal.setText("Subtotal:");
 
         txtSubtotal.setEditable(false);
+        txtSubtotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSubtotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnPagar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -60,6 +69,11 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         lblPedido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPedido.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,6 +84,7 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblServicio.setText("10% Servicio:");
 
         txtServicio.setEditable(false);
+        txtServicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtServicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblImpuestos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -77,9 +92,11 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblImpuestos.setText("13% I.V.A:");
 
         txtImpuestos.setEditable(false);
+        txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtImpuestos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtTotalFinal.setEditable(false);
+        txtTotalFinal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTotalFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTotalFinal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -213,7 +230,46 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
     //Al presionar el boton btnPagar
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         
+        //Condicional que va a comprobar si el monto ingresado al sistema es suficiente o no
+        if ((Integer.parseInt(txtMontoCliente.getText())) < (Integer.parseInt(txtTotalFinal.getText())))
+        {
+            //Cuando el monto no es suficiente
+            JOptionPane.showMessageDialog(null, """
+                                                                                                         MONTO INSUFICIENTE
+                                                
+                                                El monto ingresado para pagar la cuenta es insuficiente, favor vuelva a ingresar un monto mayor
+                                                al total final de la cuenta.
+                                                """
+                                                );
+        }
+        else
+        {
+            //Cuando el monto es suficiente
+            JOptionPane.showMessageDialog(null,"PAGO REALIZADO CON EXITO\n\nSu vuelto: " + ((Integer.parseInt(txtMontoCliente.getText())) - (Integer.parseInt(txtTotalFinal.getText()))) + "\n\n\nGracias por su preferencia!");
+            
+            //Se borran todos los pedidos de la mesa que se pagò
+            for (int i = 0; i < principal.pedidosMesas.length; i++)
+            {
+                if (mesas.mesaSeleccionada == principal.pedidosMesas[i].NumeroMesa)
+                {
+                    principal.pedidosMesas[i].NumeroMesa = 0;
+                    principal.pedidosMesas[i].CantidadProducto = 0;
+                    principal.pedidosMesas[i].NombreProducto = "";
+                    principal.pedidosMesas[i].PrecioUnitario = 0;
+                    principal.pedidosMesas[i].PrecioFinal = 0;
+                }
+            }
+            
+            this.setVisible(false);
+            mesas.setVisible(true);
+        }
     }//GEN-LAST:event_btnPagarActionPerformed
+
+    //Al presionar salir se oculta el form Cobrar_Mesa y se muestra el form Mesas
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.setVisible(false);
+        mesas.setVisible(true);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     public static void main(String args[]) {
@@ -271,5 +327,21 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
     //Se crea el getter de tblPedidos para utilizarlo en Mesas.java
     public JTable getTblPedidosCobrar() {
         return tblPedidosCobrar;
+    }
+
+    public javax.swing.JTextField getTxtImpuestos() {
+        return txtImpuestos;
+    }
+
+    public javax.swing.JTextField getTxtServicio() {
+        return txtServicio;
+    }
+
+    public javax.swing.JTextField getTxtSubtotal() {
+        return txtSubtotal;
+    }
+
+    public javax.swing.JTextField getTxtTotalFinal() {
+        return txtTotalFinal;
     }
 }
