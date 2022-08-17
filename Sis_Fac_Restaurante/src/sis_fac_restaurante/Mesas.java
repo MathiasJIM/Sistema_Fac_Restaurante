@@ -3,8 +3,6 @@ package sis_fac_restaurante;
 //Se importa JOptionPane
 import javax.swing.JOptionPane;
 
-import javax.swing.JTextField;
-
 //Source de Mesas
 public class Mesas extends javax.swing.JFrame {
 
@@ -16,6 +14,9 @@ public class Mesas extends javax.swing.JFrame {
     
     //Se declara el formulario Cobrar_Mesa como variable para ser llamado mas adelante en el programa
     Cobrar_Mesa cobrarMesa = new Cobrar_Mesa();
+    
+    //Se declara el formulario Administrativo como variable para ser llamado mas adelante en el programa
+    Administrativo admin = new Administrativo();
     
     //Variable para llamar a la funcion de mostrar pedidos
     Funciones funciones = new Funciones();
@@ -44,6 +45,7 @@ public class Mesas extends javax.swing.JFrame {
         lblPedidoActual = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPedidoActual = new javax.swing.JTable();
+        btnAdministrativo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mesas");
@@ -172,6 +174,15 @@ public class Mesas extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblPedidoActual);
 
+        btnAdministrativo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnAdministrativo.setText("Administrativo");
+        btnAdministrativo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministrativoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlMenuMesasLayout = new javax.swing.GroupLayout(pnlMenuMesas);
         pnlMenuMesas.setLayout(pnlMenuMesasLayout);
         pnlMenuMesasLayout.setHorizontalGroup(
@@ -185,7 +196,8 @@ public class Mesas extends javax.swing.JFrame {
                     .addComponent(btnIngresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(btnCobrarMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
+                        .addComponent(btnCobrarMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addComponent(btnAdministrativo, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuMesasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,10 +212,12 @@ public class Mesas extends javax.swing.JFrame {
                 .addComponent(btnIngresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(btnCobrarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(btnAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPedidoActual)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -439,6 +453,12 @@ public class Mesas extends javax.swing.JFrame {
         funciones.Mostrar_Cuenta(cobrarMesa.getTblPedidosCobrar(), mesaSeleccionada, cobrarMesa.getTxtSubtotal(), cobrarMesa.getTxtServicio(), cobrarMesa.getTxtImpuestos(), cobrarMesa.getTxtTotalFinal());
     }//GEN-LAST:event_btnCobrarMesaActionPerformed
 
+    private void btnAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrativoActionPerformed
+        //Se muestra el formulario de Administrativo
+        this.setVisible(false);
+        admin.show();
+    }//GEN-LAST:event_btnAdministrativoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -475,6 +495,7 @@ public class Mesas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdministrativo;
     private javax.swing.JButton btnCobrarMesa;
     private javax.swing.JButton btnIngresarPedido;
     private javax.swing.JScrollPane jScrollPane2;
