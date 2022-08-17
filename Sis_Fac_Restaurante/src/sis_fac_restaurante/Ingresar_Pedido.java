@@ -104,9 +104,15 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         });
 
         txtCodigoProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCodigoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCodigoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoProductoActionPerformed(evt);
+            }
+        });
+        txtCodigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoProductoKeyTyped(evt);
             }
         });
 
@@ -121,6 +127,11 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
+            }
+        });
+        txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadKeyTyped(evt);
             }
         });
 
@@ -359,6 +370,28 @@ public class Ingresar_Pedido extends javax.swing.JFrame {
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void txtCodigoProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProductoKeyTyped
+        
+        /*Funcion que se va a encargar de admitir solo numeros en el textbox txtCodigoProducto*/
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodigoProductoKeyTyped
+
+    private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
+                
+        /*Funcion que se va a encargar de admitir solo numeros en el textbox txtCantidad*/
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCantidadKeyTyped
 
     private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:

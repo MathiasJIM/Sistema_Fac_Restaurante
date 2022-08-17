@@ -1,4 +1,3 @@
-
 package sis_fac_restaurante;
 
 import javax.swing.table.DefaultTableCellRenderer;
@@ -219,6 +218,41 @@ public class Funciones {
         //Se muestra el subtotal en el textbox del monto final
         montoFinal = sumaSubtotal + Servicio + Impuestos;
         txtFinal.setText(String.valueOf(montoFinal));
+    }
+    
+    //Funcion que se va a encontrar en la clase RegistroUsuarios para mostrar los usuarios existentes
+    public void MostrarUsuarios(javax.swing.JTable tblUsuarios)
+    {
+        //Variable que va a controlar la cantidad de usuarios que se van a imprimir en la tabla
+        cantidadProductos = 0;
         
+        //Utilizando DefaultTableModel se genera la variable modeloTabla que va a controlar los tamaños de las tablas
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblUsuarios.getModel();
+        
+        //Variable que se encarga el centrado de las columnas
+        DefaultTableCellRenderer centradoColumna = new DefaultTableCellRenderer();
+        
+        //Se define la cantidad de filas en 10 para inicializar la tabla
+        modeloTabla.setRowCount(10);
+        
+        //Se define la cantidad de columnas
+        modeloTabla.setColumnCount(1);
+        
+        //Se Centran los valores de las columnas en la tabla
+        centradoColumna.setHorizontalAlignment(0);
+        tblUsuarios.getColumnModel().getColumn(0).setCellRenderer(centradoColumna);
+        
+        //Ciclo para rellenar la tabla de el formulario con los valores dentro de la matriz de usuarios
+        for (int j=0; j<10; j++)
+        {
+            //Mientras el valor de usuario en la matriz no este vacio
+            if (!" ".equals(principal.usuarios[j][0]))
+            {
+               //Se agrega 1 por 1 los valores del menu en la tabla, imprimiendo todos los usuarios en sistema
+                tblUsuarios.setValueAt(principal.usuarios[j][0], cantidadProductos, 0);
+                cantidadProductos += 1;
+            }
+        }
+        modeloTabla.setRowCount(cantidadProductos);
     }
 }

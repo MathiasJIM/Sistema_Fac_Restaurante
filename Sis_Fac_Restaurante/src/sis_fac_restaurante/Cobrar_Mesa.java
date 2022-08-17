@@ -103,6 +103,12 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         lblTotalFinal.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalFinal.setText("Total Final: ");
 
+        txtMontoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMontoClienteKeyTyped(evt);
+            }
+        });
+
         lblMontoCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblMontoCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblMontoCliente.setText("Monto Cliente:");
@@ -260,6 +266,7 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
                 }
             }
             
+            //Se cierra el form actual y se vuelve a Mesas
             this.setVisible(false);
             mesas.setVisible(true);
         }
@@ -270,6 +277,17 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         this.setVisible(false);
         mesas.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtMontoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoClienteKeyTyped
+                
+        /*Funcion que se va a encargar de admitir solo numeros en el textbox txtMontoCliente*/
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMontoClienteKeyTyped
 
 
     public static void main(String args[]) {
@@ -329,18 +347,16 @@ public class Cobrar_Mesa extends javax.swing.JFrame {
         return tblPedidosCobrar;
     }
 
+    //Se crean los getter de los textbox
     public javax.swing.JTextField getTxtImpuestos() {
         return txtImpuestos;
     }
-
     public javax.swing.JTextField getTxtServicio() {
         return txtServicio;
     }
-
     public javax.swing.JTextField getTxtSubtotal() {
         return txtSubtotal;
     }
-
     public javax.swing.JTextField getTxtTotalFinal() {
         return txtTotalFinal;
     }
